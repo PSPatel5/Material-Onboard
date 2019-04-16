@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Material Onboard</string>
+    <string name="app_name">Onboards</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="done">Let\'s Go</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="grant_permission"><u>Grant Permission</u></string>
 </resources>
