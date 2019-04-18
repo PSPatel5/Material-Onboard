@@ -30,7 +30,7 @@ public abstract class IntroActivity extends AppCompatActivity implements ViewPag
     private Button btnSkip, btnNext, btnPrevious;
     private ArrayList<Fragment> arrayList;
     private int previousPosition;
-    private boolean previousVisible;
+    private boolean previousVisible, nextVisible;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +115,7 @@ public abstract class IntroActivity extends AppCompatActivity implements ViewPag
     }
 
     public void showNextButton(boolean visibility) {
+        nextVisible = visibility;
         if (visibility)
             btnNext.setVisibility(View.VISIBLE);
         else
@@ -197,10 +198,16 @@ public abstract class IntroActivity extends AppCompatActivity implements ViewPag
 
         if (position == viewPagerAdapter.getCount() - 1) {
             btnSkip.setVisibility(View.GONE);
+            btnNext.setVisibility(View.VISIBLE);
             btnNext.setText(getString(R.string.done));
         } else {
             btnSkip.setVisibility(View.VISIBLE);
+            if (!nextVisible)
+                btnNext.setVisibility(View.INVISIBLE);
+            else
+                btnNext.setVisibility(View.VISIBLE);
             btnNext.setText(getString(R.string.next));
+
         }
         previousPosition = position;
     }
