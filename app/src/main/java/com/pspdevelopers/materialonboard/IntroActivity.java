@@ -154,8 +154,7 @@ public abstract class IntroActivity extends AppCompatActivity implements ViewPag
             else if (arrayList.get(verticalViewPager.getCurrentItem()) instanceof PermissionTemplate) {
                 if (((PermissionTemplate) arrayList.get(verticalViewPager.getCurrentItem())).isPermissionDenied())
                     onPermissionDenied();
-                else
-                    onDonePressed();
+                onDonePressed();
             } else
                 onDonePressed();
         } else {
