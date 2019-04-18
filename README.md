@@ -44,7 +44,7 @@ allprojects {
 Put below line in your app level Gradle.
 
 ```sh
-implementation 'com.github.techtainer-psp:Material-Onboard:v1.0'
+implementation 'com.github.techtainer-psp:Material-Onboard:v1.7'
 ```
 
 ### Other Libraries
