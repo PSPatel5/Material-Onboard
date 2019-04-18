@@ -87,12 +87,15 @@ public class PermissionTemplate extends Fragment {
         tvDescription = rootView.findViewById(R.id.tv_description);
         ivImage = rootView.findViewById(R.id.iv_image);
         btnPermission = rootView.findViewById(R.id.btn_permission);
-        btnPermission.setOnClickListener((view) -> {
-            if (getActivity() != null) {
-                if (ActivityCompat.checkSelfPermission(getActivity(), permission) != PackageManager.PERMISSION_GRANTED)
-                    ActivityCompat.requestPermissions(getActivity(), new String[]{permission}, REQUEST_CODE);
-                else {
-                    Toast.makeText(getActivity(), "Already Have That Permission", Toast.LENGTH_SHORT).show();
+        btnPermission.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (getActivity() != null) {
+                    if (ActivityCompat.checkSelfPermission(getActivity(), permission) != PackageManager.PERMISSION_GRANTED)
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{permission}, REQUEST_CODE);
+                    else {
+                        Toast.makeText(getActivity(), "Already Have That Permission", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

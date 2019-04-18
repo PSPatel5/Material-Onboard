@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/view_constraint_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".IntroActivity">
+
+    <com.pspdevelopers.materialonboard.helper.VerticalViewPager
+        android:id="@+id/on_board_view_pager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.pspdevelopers.materialonboard.widget.PageIndicatorView
+        android:id="@+id/page_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:indicator_animationType="thinLine"
+        app:indicator_autoVisibility="false"
+        app:indicator_dynamicCount="true"
+        app:indicator_interactiveAnimation="true"
+        app:indicator_orientation="vertical"
+        app:indicator_radius="5dp"
+        app:indicator_selectedColor="#0B1F70"
+        app:indicator_unselectedColor="#6a6a6a"
+        app:indicator_viewPager="@id/on_board_view_pager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:color/transparent"
+        android:drawableEnd="@drawable/ic_expand_more"
+        android:drawablePadding="4dp"
+        android:fontFamily="@font/raleway_light_italic"
+        android:text="@string/skip_to_bottom"
+        android:textColor="#6a6a6a"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_previous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@android:color/transparent"
+        android:drawableStart="@drawable/ic_previous"
+        android:drawablePadding="4dp"
+        android:text="@string/previous"
+        android:textColor="#0B1F70"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        android:drawableEnd="@drawable/ic_next"
+        android:text="@string/next"
+        android:textColor="#0B1F70"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBaseline_toBaselineOf="@id/btn_previous"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <!--<View
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:layout_marginBottom="4dp"
+        android:background="#0B1F70"
+        app:layout_constraintBottom_toTopOf="@id/btn_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />-->
+
+
+    <!-- <ImageView
+         android:layout_width="110dp"
+         android:layout_height="65dp"
+         android:src="@drawable/swipe_up"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent" />
+ -->
+</androidx.constraintlayout.widget.ConstraintLayout>

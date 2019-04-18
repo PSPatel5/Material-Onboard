@@ -17,20 +17,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.rd.PageIndicatorView
+    <com.pspdevelopers.materialonboard.widget.PageIndicatorView
+        android:id="@+id/page_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@id/btn_next"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:indicator_animationType="thinLine"
+        app:indicator_dynamicCount="true"
         app:layout_constraintTop_toTopOf="@id/btn_next"
-        app:piv_animationType="thinWorm"
-        app:piv_dynamicCount="true"
-        app:piv_interactiveAnimation="true"
-        app:piv_radius="5dp"
-        app:piv_selectedColor="#0B1F70"
-        app:piv_unselectedColor="#6a6a6a"
-        app:piv_viewPager="@id/on_board_view_pager" />
+        app:indicator_interactiveAnimation="true"
+        app:indicator_radius="5dp"
+        app:indicator_selectedColor="#0B1F70"
+        app:indicator_unselectedColor="#6a6a6a"
+        app:indicator_viewPager="@id/on_board_view_pager"
+        app:layout_constraintEnd_toStartOf="@id/btn_next"
+        app:layout_constraintStart_toEndOf="@id/btn_previous" />
 
     <Button
         android:id="@+id/btn_skip"
@@ -47,19 +48,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <Button
+        android:id="@+id/btn_previous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@android:color/transparent"
+        android:drawableStart="@drawable/ic_previous"
+        android:drawablePadding="4dp"
+        android:text="@string/previous"
+        android:textColor="#0B1F70"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
         android:background="@android:color/transparent"
         android:drawableEnd="@drawable/ic_next"
         android:text="@string/next"
         android:textColor="#0B1F70"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@id/btn_previous"
         app:layout_constraintEnd_toEndOf="parent" />
+
 
     <!--<View
         android:layout_width="0dp"

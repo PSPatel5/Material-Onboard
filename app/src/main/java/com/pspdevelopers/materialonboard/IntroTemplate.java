@@ -184,6 +184,4 @@ public class IntroTemplate extends Fragment {
             }
         }
     }
-
-
 }

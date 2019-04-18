@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PageIndicatorView">
+        <attr name="indicator_orientation">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+
+        <attr name="indicator_viewPager" format="reference" />
+        <attr name="indicator_select" format="integer" />
+
+        <attr name="indicator_count" format="integer" />
+        <attr name="indicator_dynamicCount" format="boolean" />
+
+        <attr name="indicator_radius" format="dimension" />
+        <attr name="indicator_padding" format="dimension" />
+        <attr name="indicator_strokeWidth" format="dimension" />
+        <attr name="indicator_scaleFactor" format="float" />
+        <attr name="indicator_autoVisibility" format="boolean" />
+
+        <attr name="indicator_unselectedColor" format="color" />
+        <attr name="indicator_selectedColor" format="color" />
+
+        <attr name="indicator_fadeOnIdle" format="boolean" />
+        <attr name="indicator_idleDuration" format="integer" />
+
+        <attr name="indicator_interactiveAnimation" format="boolean" />
+        <attr name="indicator_animationDuration" format="integer" />
+        <attr name="indicator_animationType">
+            <enum name="none" value="0" />
+            <enum name="color" value="1" />
+            <enum name="line" value="2" />
+            <enum name="thinLine" value="3" />
+            <enum name="swap" value="4" />
+        </attr>
+    </declare-styleable>
+</resources>

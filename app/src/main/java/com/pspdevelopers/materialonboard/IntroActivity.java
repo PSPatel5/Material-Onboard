@@ -8,7 +8,9 @@ import android.widget.Button;
 import com.google.android.material.snackbar.Snackbar;
 import com.pspdevelopers.materialonboard.helper.BaseFragment;
 import com.pspdevelopers.materialonboard.helper.Constants;
+import com.pspdevelopers.materialonboard.helper.VerticalViewPager;
 import com.pspdevelopers.materialonboard.helper.ViewPagerAdapter;
+import com.pspdevelopers.materialonboard.widget.PageIndicatorView;
 
 import java.util.ArrayList;
 
@@ -19,36 +21,119 @@ import androidx.viewpager.widget.ViewPager;
 
 public abstract class IntroActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
 
-    private ViewPager viewPager;
-    private Button btnSkip;
+
+    private ViewPager horizontalViewPager;
+    private VerticalViewPager verticalViewPager;
     private ViewPagerAdapter viewPagerAdapter;
-    private ArrayList<Fragment> arrayList;
-    private Button btnNext;
-    private int previousPosition;
+    private PageIndicatorView pageIndicatorView;
     private ConstraintLayout constraintLayout;
+    private Button btnSkip, btnNext, btnPrevious;
+    private ArrayList<Fragment> arrayList;
+    private int previousPosition;
+    private boolean previousVisible;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.intro_activity);
-        initVariables();
+        if (isVertical())
+            setContentView(R.layout.intro_activity_vertical);
+        else
+            setContentView(R.layout.intro_activity_horizontal);
+        initCommonVariables();
+
         if (getSupportActionBar() != null)
             getSupportActionBar().hide();
     }
 
-    private void initVariables() {
+    private void initCommonVariables() {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         constraintLayout = findViewById(R.id.view_constraint_layout);
-        viewPager = findViewById(R.id.on_board_view_pager);
+        pageIndicatorView = findViewById(R.id.page_indicator);
         btnNext = findViewById(R.id.btn_next);
-        btnNext.setOnClickListener((view) -> onNextPressed());
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onNextPressed();
+            }
+        });
+        btnPrevious = findViewById(R.id.btn_previous);
+        btnPrevious.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onPreviousPressed();
+            }
+        });
         btnSkip = findViewById(R.id.btn_skip);
-        btnSkip.setOnClickListener((view) -> onSkipPressed());
-        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        btnSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                if (isVertical())
+//                    verticalViewPager.setCurrentItem(viewPagerAdapter.getCount(), true);
+//                else
+//                    horizontalViewPager.setCurrentItem(viewPagerAdapter.getCount(), true);
+                onSkipPressed();
+            }
+        });
         arrayList = new ArrayList<>();
-        viewPager.setAdapter(viewPagerAdapter);
-        viewPager.addOnPageChangeListener(this);
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         previousPosition = 0;
+        previousVisible = true;
+        if (isVertical())
+            initVerticalVariables();
+        else
+            initHorizontalVariables();
+
+    }
+
+    private void onPreviousPressed() {
+        if (isVertical())
+            verticalViewPager.setCurrentItem(verticalViewPager.getCurrentItem() - 1);
+        else
+            horizontalViewPager.setCurrentItem(horizontalViewPager.getCurrentItem() - 1);
+    }
+
+    private void initVerticalVariables() {
+        verticalViewPager = findViewById(R.id.on_board_view_pager);
+        verticalViewPager.setAdapter(viewPagerAdapter);
+        verticalViewPager.addOnPageChangeListener(this);
+    }
+
+    public abstract boolean isVertical();
+
+    public void showIndicators(boolean visibility) {
+        if (visibility)
+            pageIndicatorView.setVisibility(View.VISIBLE);
+        else
+            pageIndicatorView.setVisibility(View.INVISIBLE);
+    }
+
+    public void showSkipButton(boolean visibility) {
+        if (visibility)
+            btnSkip.setVisibility(View.VISIBLE);
+        else
+            btnSkip.setVisibility(View.INVISIBLE);
+    }
+
+    public void showNextButton(boolean visibility) {
+        if (visibility)
+            btnNext.setVisibility(View.VISIBLE);
+        else
+            btnNext.setVisibility(View.INVISIBLE);
+    }
+
+
+    public void showPreviousButton(boolean visibility) {
+        previousVisible = visibility;
+        if (visibility)
+            btnPrevious.setVisibility(View.VISIBLE);
+        else
+            btnPrevious.setVisibility(View.INVISIBLE);
+    }
+
+    private void initHorizontalVariables() {
+        horizontalViewPager = findViewById(R.id.on_board_view_pager);
+        horizontalViewPager.setAdapter(viewPagerAdapter);
+        horizontalViewPager.addOnPageChangeListener(this);
     }
 
     public void addNewPage(Fragment fragment) {
@@ -62,17 +147,25 @@ public abstract class IntroActivity extends AppCompatActivity implements ViewPag
 
 
     public void onNextPressed() {
-        if (viewPager.getCurrentItem() < viewPagerAdapter.getCount() - 1)
-            viewPager.setCurrentItem(viewPager.getCurrentItem() + 1, true);
-        else if (arrayList.get(viewPager.getCurrentItem()) instanceof PermissionTemplate) {
-            if (((PermissionTemplate) arrayList.get(viewPager.getCurrentItem())).isPermissionDenied())
-                onPermissionDenied();
-            else
+        if (isVertical()) {
+            if (verticalViewPager.getCurrentItem() < viewPagerAdapter.getCount() - 1)
+                verticalViewPager.setCurrentItem(verticalViewPager.getCurrentItem() + 1, true);
+            else if (arrayList.get(verticalViewPager.getCurrentItem()) instanceof PermissionTemplate) {
+                if (((PermissionTemplate) arrayList.get(verticalViewPager.getCurrentItem())).isPermissionDenied())
+                    onPermissionDenied();
+                else
+                    onDonePressed();
+            } else
                 onDonePressed();
-        } else
-            onDonePressed();
-
-
+        } else {
+            if (horizontalViewPager.getCurrentItem() < viewPagerAdapter.getCount() - 1)
+                horizontalViewPager.setCurrentItem(horizontalViewPager.getCurrentItem() + 1, true);
+            else if (arrayList.get(horizontalViewPager.getCurrentItem()) instanceof PermissionTemplate) {
+                if (((PermissionTemplate) arrayList.get(horizontalViewPager.getCurrentItem())).isPermissionDenied())
+                    onPermissionDenied();
+                onDonePressed();
+            }
+        }
     }
 
     private void onPermissionDenied() {
@@ -90,12 +183,19 @@ public abstract class IntroActivity extends AppCompatActivity implements ViewPag
 
     @Override
     public void onPageSelected(int position) {
+        if (position == 0)
+            btnPrevious.setVisibility(View.INVISIBLE);
+        else {
+            if (previousVisible)
+                btnPrevious.setVisibility(View.VISIBLE);
+        }
+
         if (previousPosition < position)
             if (arrayList.get(previousPosition) instanceof PermissionTemplate)
                 if (((PermissionTemplate) arrayList.get(previousPosition)).isPermissionDenied())
                     onPermissionDenied();
 
-        if (viewPager.getCurrentItem() == viewPagerAdapter.getCount() - 1) {
+        if (position == viewPagerAdapter.getCount() - 1) {
             btnSkip.setVisibility(View.GONE);
             btnNext.setText(getString(R.string.done));
         } else {
