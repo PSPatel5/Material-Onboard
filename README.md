@@ -21,8 +21,8 @@ You can also:
 
 A good design is always crucial in software developement process. Google introduced material design with api 21 back in 2015. About designing As Irene au quotes,
 
-> Good design is like a refrigerator when it works , 
-no one notices but when it doesn’t , it sure stinks.
+> Good design is like a refrigerator. When it works ,
+> no one notices but when it doesn’t , it sure stinks.
 
 ### Installation
 
