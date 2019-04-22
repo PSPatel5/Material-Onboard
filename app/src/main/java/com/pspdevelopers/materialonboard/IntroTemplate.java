@@ -149,8 +149,8 @@ public class IntroTemplate extends Fragment {
         return backgroundDrawable;
     }
 
-    public void setBackgroundDrawable(int backgroundDrawable) {
-        this.backgroundDrawable = backgroundDrawable;
+    public void setBackgroundResource(int backgroundResource) {
+        this.backgroundDrawable = backgroundResource;
     }
 
     //    endregion
