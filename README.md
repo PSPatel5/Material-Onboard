@@ -38,7 +38,7 @@ Material intro requies [Design Support Library](https://developer.android.com/to
 
 Put below line in your project level Gradle.
 
-```gradle
+```Gradle & Maven
 allprojects {
     repositories {
         maven { url 'https://jitpack.io' }
@@ -48,7 +48,7 @@ allprojects {
 
 Put below line in your app level Gradle.
 
-```gradle
+```Gradle & Maven
 implementation 'com.github.techtainer-psp:Material-Onboard:v1.7'
 ```
 
@@ -59,7 +59,7 @@ Material Onboard uses these other libraries and they are required to make this l
 * [Design Support Library] - For snakbar when permission is denied by user !
 * [Constraint Layout] - For Layout designing.
 
-```gradle
+```Gradle & Maven
 implementation 'com.android.support:design:28.0.0'
 implementation 'com.android.support.constraint:constraint-layout:1.1.2'
 ```
