@@ -6,7 +6,7 @@ A good design is always crucial in software developement process. Google introdu
 > Good design is like a refrigerator. When it works , 
 > no one notices but when it doesn’t , it sure stinks.
 
-# Demo
+## Demo
 
 ### Vertical Intro
 ![](https://github.com/techtainer-psp/Material-Onboard/blob/master/pictures/Vertical_color.gif)
@@ -49,7 +49,7 @@ allprojects {
 Put below line in your app level Gradle.
 
 ```Gradle & Maven
-implementation 'com.github.techtainer-psp:Material-Onboard:v1.8.2'
+implementation 'com.github.techtainer-psp:Material-Onboard:v1.8.3'
 ```
 
 ### Other Libraries
@@ -146,16 +146,20 @@ Using layout resource file only
 #### Extra Feautures
 
 By extracting '**IntroActivity**' , you will be overriding 3 factory methods which are
-- public boolean isVertical();           /// Wether to scroll horizontally or vertically
+- public boolean isVertical();         /// Whether to scroll horizontally or vertically
 - public void onDonePressed();        /// What to do on Click Done on Last page of Introduction
 - public void onSkipPressed();        /// What to do on Click of Skip Button
 
 This three Methods are compulsory other optional methods are:
 
 - showIndicators(boolean visibility);       // show/hide page indicators
+- setIndicatorColors(int selectedColor, int unSelectedColor)      // set page indicator colors
 - showPreviousButton(boolean visibility);   // show/hide  previous button
 - showSkipButton(boolean visibility);       // show/hide skip button
-- showNextButton(boolean visibility);       // show/hide next button.
+- showNextButton(boolean visibility);       // show/hide next button
+- setSkipTextColor(int textColor);          // change text color of skip button
+- setNextTextColor(int textColor);          // change text color of next button
+- setPreviousTextColor(int textColor);       // change text color of previous button
 
 ### Issues
 While using this library if you face any issues report use at techtainer.psp@gmail.com

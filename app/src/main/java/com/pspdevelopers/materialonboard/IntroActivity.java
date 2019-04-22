@@ -102,7 +102,7 @@ public abstract class IntroActivity extends AppCompatActivity implements ViewPag
         btnNext.setTextColor(textColor);
     }
 
-    public void setpreviousTextColor(int textColor) {
+    public void setPreviousTextColor(int textColor) {
         btnPrevious.setTextColor(textColor);
     }
 
