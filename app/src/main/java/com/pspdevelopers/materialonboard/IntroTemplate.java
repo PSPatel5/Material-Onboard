@@ -24,6 +24,7 @@ public class IntroTemplate extends Fragment {
     private String title, body;
     private int imageResource;
     private int backgroundColor;
+    private int backgroundDrawable;
     private int titleColor;
     private int bodyColor;
     private int titleTypeFace, bodyTypeFace;
@@ -56,7 +57,8 @@ public class IntroTemplate extends Fragment {
         args.putFloat(Constants.BODY_SIZE, introTemplate.getContentSize());
 
         args.putInt(Constants.IMAGE, introTemplate.getImageResource());
-        args.putInt(Constants.BACKGROUND, introTemplate.getBackgroundColor());
+        args.putInt(Constants.BACKGROUND_COLOR, introTemplate.getBackgroundColor());
+        args.putInt(Constants.BACKGROUND_DRAWABLE, introTemplate.getBackgroundDrawable());
         fragmentFirst.setArguments(args);
         return fragmentFirst;
     }
@@ -86,7 +88,6 @@ public class IntroTemplate extends Fragment {
     public void setTitleSize(float titleSize) {
         this.titleSize = titleSize;
     }
-
 
     private float getContentSize() {
         return bodySize;
@@ -144,7 +145,15 @@ public class IntroTemplate extends Fragment {
         this.backgroundColor = colorResource;
     }
 
-//    endregion
+    private int getBackgroundDrawable() {
+        return backgroundDrawable;
+    }
+
+    public void setBackgroundDrawable(int backgroundDrawable) {
+        this.backgroundDrawable = backgroundDrawable;
+    }
+
+    //    endregion
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -167,8 +176,9 @@ public class IntroTemplate extends Fragment {
             tvTitle.setText(bundle.getString(Constants.TITLE_TEXT));
             tvBody.setText(bundle.getString(Constants.BODY_TEXT));
             ivImage.setImageResource(bundle.getInt(Constants.IMAGE));
-            rootLayout.setBackgroundColor(bundle.getInt(Constants.BACKGROUND));
             if (!bundle.getBoolean(Constants.FROM_CONSTRUCTOR)) {
+                if (bundle.getInt(Constants.BACKGROUND_COLOR) != 0)
+                    rootLayout.setBackgroundColor(bundle.getInt(Constants.BACKGROUND_COLOR));
                 if (bundle.getInt(Constants.TITLE_COLOR) != 0)
                     tvTitle.setTextColor(bundle.getInt(Constants.TITLE_COLOR));
                 if (bundle.getInt(Constants.TITLE_TYPEFACE) != 0)
@@ -181,6 +191,9 @@ public class IntroTemplate extends Fragment {
                     tvBody.setTypeface(Typeface.defaultFromStyle(bundle.getInt(Constants.BODY_TYPEFACE)));
                 if (bundle.getFloat(Constants.BODY_SIZE) != 0)
                     tvBody.setTextSize(bundle.getFloat(Constants.BODY_SIZE));
+                if (bundle.getInt(Constants.BACKGROUND_DRAWABLE) != 0)
+                    rootLayout.setBackgroundResource(bundle.getInt(Constants.BACKGROUND_DRAWABLE));
+
             }
         }
     }

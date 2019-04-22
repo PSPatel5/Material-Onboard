@@ -67,7 +67,7 @@ public class PermissionTemplate extends Fragment {
         bundle.putInt(Constants.BUTTON_TYPEFACE, permissionTemplate.getButtonTypeFace());
         bundle.putInt(Constants.BUTTON_COLOR, permissionTemplate.getButtonColor());
 
-        bundle.putInt(Constants.BACKGROUND, permissionTemplate.getBackgroundColor());
+        bundle.putInt(Constants.BACKGROUND_COLOR, permissionTemplate.getBackgroundColor());
         template.setArguments(bundle);
         return template;
     }
@@ -124,8 +124,8 @@ public class PermissionTemplate extends Fragment {
             if (bundle.getInt(Constants.DESCRIPTION_TYPEFACE) != 0)
                 tvDescription.setTypeface(Typeface.defaultFromStyle(bundle.getInt(Constants.DESCRIPTION_TYPEFACE)));
 
-            if (bundle.getInt(Constants.BACKGROUND) != 0)
-                constraintLayout.setBackgroundColor(bundle.getInt(Constants.BACKGROUND));
+            if (bundle.getInt(Constants.BACKGROUND_COLOR) != 0)
+                constraintLayout.setBackgroundColor(bundle.getInt(Constants.BACKGROUND_COLOR));
         }
 
     }

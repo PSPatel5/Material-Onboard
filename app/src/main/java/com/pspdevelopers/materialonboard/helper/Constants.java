@@ -13,7 +13,7 @@ public class Constants {
     public static String BODY_TYPEFACE = "Body Font";
     public static String BODY_SIZE = "Body Size";
 
-    public static String BACKGROUND = "Background";
+    public static String BACKGROUND_COLOR = "Background";
     public static String FROM_CONSTRUCTOR = "From Constructor";
     public static String PERMISSIONS = "Permissions";
     public static String PERMISSION_DENIED = "Application may not work as intended , As permission is denied.";
@@ -29,4 +29,5 @@ public class Constants {
     public static String DESCRIPTION_SIZE = "Description Size";
     public static String DESCRIPTION_TYPEFACE = "Description Typeface";
 
+    public static String BACKGROUND_DRAWABLE = "Background Drawable";
 }
