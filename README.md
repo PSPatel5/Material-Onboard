@@ -8,11 +8,7 @@ A good design is always crucial in software developement process. Google introdu
 
 ## Demo
 
-### Vertical Intro
-![](https://github.com/techtainer-psp/Material-Onboard/blob/master/pictures/Vertical_color.gif)
-
-### Horizontal Intro
-![](https://github.com/techtainer-psp/Material-Onboard/blob/master/pictures/Horizontal_white.gif)
+<img src = "https://github.com/techtainer-psp/Material-Onboard/blob/master/pictures/Vertical_color.gif" width="300" align="left">     <img src = "https://github.com/techtainer-psp/Material-Onboard/blob/master/pictures/Horizontal_white.gif" width="300" align="middle">
 
 ## Features!
 
