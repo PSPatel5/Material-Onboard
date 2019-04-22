@@ -6,8 +6,13 @@ A good design is always crucial in software developement process. Google introdu
 > Good design is like a refrigerator. When it works , 
 > no one notices but when it doesn’t , it sure stinks.
 
-# Screenshots
+# Demo
 
+### Vertical Intro
+![](https://github.com/techtainer-psp/Material-Onboard/blob/master/pictures/Vertical_color.gif)
+
+### Horizontal Intro
+![](https://github.com/techtainer-psp/Material-Onboard/blob/master/pictures/Horizontal_white.gif)
 
 ## Features!
 
@@ -33,7 +38,7 @@ Material intro requies [Design Support Library](https://developer.android.com/to
 
 Put below line in your project level Gradle.
 
-```sh
+```gradle
 allprojects {
     repositories {
         maven { url 'https://jitpack.io' }
@@ -43,7 +48,7 @@ allprojects {
 
 Put below line in your app level Gradle.
 
-```sh
+```gradle
 implementation 'com.github.techtainer-psp:Material-Onboard:v1.7'
 ```
 
@@ -54,7 +59,7 @@ Material Onboard uses these other libraries and they are required to make this l
 * [Design Support Library] - For snakbar when permission is denied by user !
 * [Constraint Layout] - For Layout designing.
 
-```sh
+```gradle
 implementation 'com.android.support:design:28.0.0'
 implementation 'com.android.support.constraint:constraint-layout:1.1.2'
 ```
@@ -66,7 +71,7 @@ In your launcher activity Instead of extending AppCompatActivity , extend '**Int
 
 ##### Method 1
 Default Fragment Template
-```sh
+```java
 //to create a page
 
 IntroTemplate introTemplate = IntroTemplate.newInstance(TITLE , IMAGE_RESOURCE , DESCRIPTION);
@@ -77,7 +82,7 @@ addNewPage(introTemplate);
 ```
 ##### Method 2
 Default Fragment Template With Advance Parameters
-```sh
+```java
 //to create a page
     IntroTemplate template = new IntroTemplate();
     template.setTitle(String title);
@@ -97,7 +102,7 @@ Default Fragment Template With Advance Parameters
 
 ##### Method 3
 Default Permission Slide
-```sh
+```java
 //to create a page
     PermissionTemplate template = PermissionTemplate.newInstance(IMAGE_RESOURCE, DESCRIPTION , PERMISSION);  
     // example - PERMISSION =  Manifest.permission.ACCESS_FINE_LOCATION;
@@ -106,7 +111,7 @@ Default Permission Slide
 ```
 ##### Method 4
 Default Permission Slide with advance parameters
-```sh
+```java
 //to create a page
 
         PermissionTemplate template = new PermissionTemplate();
@@ -124,7 +129,7 @@ Default Permission Slide with advance parameters
 
 ##### Method 5
 User Defined Fragments
-```sh
+```java
 //to create a page
     CustomFragment fragment = new CustomFragment();
 //add it using
@@ -132,7 +137,7 @@ User Defined Fragments
 ```
 ##### Method 6
 Using layout resource file only
-```sh
+```java
 //to create a page
     int resouce_id = R.layout.layout_resource_id;
 //add it using
