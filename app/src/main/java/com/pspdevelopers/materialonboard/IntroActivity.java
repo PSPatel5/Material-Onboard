@@ -85,6 +85,27 @@ public abstract class IntroActivity extends AppCompatActivity implements ViewPag
 
     }
 
+
+    private void setIndicatorColors(int selectedColor, int unSelectedColor) {
+        if (selectedColor != 0)
+            pageIndicatorView.setSelectedColor(selectedColor);
+        if (unSelectedColor != 0)
+            pageIndicatorView.setUnselectedColor(unSelectedColor);
+    }
+
+
+    private void setSkipTextColor(int textColor) {
+        btnSkip.setTextColor(textColor);
+    }
+
+    private void setnextTextColor(int textColor) {
+        btnNext.setTextColor(textColor);
+    }
+
+    private void setpreviousTextColor(int textColor) {
+        btnPrevious.setTextColor(textColor);
+    }
+
     private void onPreviousPressed() {
         if (isVertical())
             verticalViewPager.setCurrentItem(verticalViewPager.getCurrentItem() - 1);
