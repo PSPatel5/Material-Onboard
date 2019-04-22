@@ -31,7 +31,7 @@ public class PermissionTemplate extends Fragment {
     private int descriptionTypeFace, descriptionColor;
     private int buttonTypeFace, buttonColor;
     private float buttonSize, descriptionSize;
-    private int backgroundColor;
+    private int backgroundColor, backgroundDrawable;
     private String buttonText;
     private int imageResource;
     private String permission;
@@ -68,6 +68,7 @@ public class PermissionTemplate extends Fragment {
         bundle.putInt(Constants.BUTTON_COLOR, permissionTemplate.getButtonColor());
 
         bundle.putInt(Constants.BACKGROUND_COLOR, permissionTemplate.getBackgroundColor());
+        bundle.putInt(Constants.BACKGROUND_DRAWABLE, permissionTemplate.getBackgroundDrawable());
         template.setArguments(bundle);
         return template;
     }
@@ -126,6 +127,9 @@ public class PermissionTemplate extends Fragment {
 
             if (bundle.getInt(Constants.BACKGROUND_COLOR) != 0)
                 constraintLayout.setBackgroundColor(bundle.getInt(Constants.BACKGROUND_COLOR));
+            if (bundle.getInt(Constants.BACKGROUND_DRAWABLE) != 0)
+                constraintLayout.setBackgroundResource(bundle.getInt(Constants.BACKGROUND_DRAWABLE));
+
         }
 
     }
@@ -220,6 +224,14 @@ public class PermissionTemplate extends Fragment {
 
     public void setButtonText(String buttonText) {
         this.buttonText = buttonText;
+    }
+
+    private int getBackgroundDrawable() {
+        return backgroundDrawable;
+    }
+
+    public void setBackgroundResource(int backgroundResource) {
+        this.backgroundDrawable = backgroundResource;
     }
 
     //    endregion
