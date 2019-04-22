@@ -49,7 +49,7 @@ allprojects {
 Put below line in your app level Gradle.
 
 ```Gradle & Maven
-implementation 'com.github.techtainer-psp:Material-Onboard:v1.7'
+implementation 'com.github.techtainer-psp:Material-Onboard:v1.8.2'
 ```
 
 ### Other Libraries
